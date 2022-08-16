@@ -1,0 +1,22 @@
+
+<p class="font-bold text-rose-500">Template-Driven Form</p>
+<form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)" >
+  <div class="mb-6">
+    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
+    <input required [(ngModel)] = "user.email" name="email" type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" #email="ngModel">
+  <div class="text-rose-600" *ngIf="email.errors?.['required']"> Name is required</div>
+  </div>
+  <div class="mb-6">
+    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your password</label>
+    <input  [(ngModel)]="user.password"  name="password" type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+  </div>
+  <button type="submit" [disabled]="loginForm.status=='INVALID'"
+          class="text-white bg-green-600 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+    Login
+  </button>
+</form>
+
+<p> Value from Form:</p>
+<p>{{this.user|json}}</p>
+<p>{{loginForm.status}}</p>
+
